@@ -1,0 +1,162 @@
+name: UI/UX Improvement
+description: Suggest improvements to the user interface or user experience
+title: "[UI/UX]: "
+labels: ["enhancement", "ui/ux"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve the user experience! Please describe the UI/UX issue or improvement.
+        
+  - type: dropdown
+    id: improvement-type
+    attributes:
+      label: Type of Improvement
+      description: What kind of UI/UX improvement is this?
+      options:
+        - Visual Design (colors, fonts, spacing)
+        - Layout/Organization
+        - User Flow/Navigation
+        - Accessibility
+        - Mobile/Responsive Design
+        - Performance/Loading
+        - Error Messages/Feedback
+        - Button/Control Placement
+        - Readability/Content
+        - Other (describe below)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-experience
+    attributes:
+      label: Current Experience
+      description: What is the current UI/UX like?
+      placeholder: "e.g., The activity cards are hard to read because the text is too small and the colors don't have enough contrast"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: How should it be improved?
+      placeholder: "e.g., Increase font size to 16px, use darker text color (#333 instead of #999), add more padding between elements"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: affected-page
+    attributes:
+      label: Which page or component is affected?
+      description: Where is this UI/UX issue located?
+      multiple: true
+      options:
+        - Home/Activities List
+        - Activity Details Cards
+        - Registration Modal
+        - Login Modal
+        - Header/Navigation
+        - Filters/Search
+        - Footer
+        - Error Messages
+        - All Pages
+        - Other (specify below)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: user-impact
+    attributes:
+      label: Who is affected?
+      description: Which users experience this issue?
+      multiple: true
+      options:
+        - Teachers
+        - Students
+        - All users
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: devices-affected
+    attributes:
+      label: Device Type
+      description: On which devices is this issue noticeable?
+      multiple: true
+      options:
+        - Desktop/Laptop
+        - Tablet
+        - Mobile Phone
+        - All devices
+    validations:
+      required: true
+      
+  - type: textarea
+    id: why-important
+    attributes:
+      label: Why is this important?
+      description: How does this improvement benefit users?
+      placeholder: "e.g., Better readability reduces eye strain and makes it easier for teachers to quickly scan activities"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: design-suggestions
+    attributes:
+      label: Specific Design Suggestions
+      description: Any specific CSS, color codes, spacing values, or design details?
+      placeholder: |
+        e.g.,
+        - Font size: 16px -> 18px
+        - Line height: 1.4 -> 1.6
+        - Color: #999 -> #333
+        - Padding: 10px -> 20px
+      render: text
+    validations:
+      required: false
+      
+  - type: textarea
+    id: accessibility-notes
+    attributes:
+      label: Accessibility Considerations
+      description: How does this improvement affect accessibility?
+      placeholder: "e.g., Higher contrast will help users with visual impairments, larger touch targets will help motor-impaired users"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: examples-references
+    attributes:
+      label: Examples or References
+      description: Links to similar designs, screenshots, or mockups
+      placeholder: "e.g., This website has a good example: https://example.com"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Acceptance Criteria
+        
+        When this improvement is implemented:
+        - The visual change should be consistent across all relevant pages
+        - The improvement should enhance usability without breaking existing functionality
+        - The design should remain consistent with the overall site aesthetic
+        - Changes should be tested on different screen sizes and browsers
+        - Accessibility should be maintained or improved (WCAG 2.1 guidelines)
+        - Performance should not be negatively impacted
+        
+        ## Implementation Notes
+        
+        For developers:
+        - UI changes are primarily in `src/static/styles.css` and `src/static/index.html`
+        - Dynamic UI elements are rendered in `src/static/app.js`
+        - Test changes in multiple browsers (Chrome, Firefox, Safari, Edge)
+        - Verify responsive behavior at common breakpoints (mobile: 320px-767px, tablet: 768px-1023px, desktop: 1024px+)
+        - Check color contrast ratios with tools like WebAIM Contrast Checker
+        - Ensure keyboard navigation still works properly
+        - Test with browser zoom at 200%
+        - Consider CSS variables for maintaining consistency

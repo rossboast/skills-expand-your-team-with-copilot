@@ -1,0 +1,101 @@
+name: Add New Activity/Club
+description: Request a new extracurricular activity or club to be added to the system
+title: "[New Activity]: "
+labels: ["enhancement", "activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new activity! Please provide the details below so we can add it to the system.
+        
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity/Club Name
+      description: What is the name of this activity or club?
+      placeholder: "e.g., Drama Club, Science Olympiad, Yoga Class"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of what students will do in this activity
+      placeholder: "e.g., Students will learn acting, stage performance, and participate in school plays"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: schedule-days
+    attributes:
+      label: Which days will this activity meet?
+      description: Select all days that apply
+      multiple: true
+      options:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+    validations:
+      required: true
+      
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: When does the activity start? (Use 24-hour format HH:MM)
+      placeholder: "e.g., 15:30 for 3:30 PM, 07:00 for 7:00 AM"
+    validations:
+      required: true
+      
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: When does the activity end? (Use 24-hour format HH:MM)
+      placeholder: "e.g., 17:00 for 5:00 PM, 08:30 for 8:30 AM"
+    validations:
+      required: true
+      
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can participate?
+      placeholder: "e.g., 20"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other important details (required materials, prerequisites, location, etc.)
+      placeholder: "e.g., Students should bring their own art supplies, No prior experience required"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Acceptance Criteria
+        
+        When this issue is completed:
+        - The new activity should appear in the activities list on the website
+        - Students should be able to register for the activity
+        - The activity should have the correct schedule, description, and participant limit
+        - The activity should be filterable by day and time
+        
+        ## Implementation Notes
+        
+        For developers: Add the new activity to the `initial_activities` dictionary in `src/backend/database.py`. Ensure:
+        - The activity name is used as the key
+        - Include all required fields: `description`, `schedule`, `schedule_details`, `max_participants`, and `participants` (initially empty list)
+        - The `schedule_details` object must include `days` (array), `start_time`, and `end_time`
+        - Format times in 24-hour format (HH:MM)
