@@ -1,0 +1,140 @@
+name: Bug Report
+description: Report a problem with the activities management system
+title: "[Bug]: "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide as much detail as possible.
+        
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: What's not working?
+      description: Describe the problem you're experiencing
+      placeholder: "e.g., Students cannot register for Chess Club even though there are spots available"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should happen instead?
+      description: Describe what you expected to happen
+      placeholder: "e.g., Students should be able to click 'Register Student' and successfully sign up"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we recreate this problem?
+      placeholder: |
+        1. Log in as a teacher
+        2. Navigate to Chess Club
+        3. Click 'Register Student'
+        4. Enter student email
+        5. Click submit
+        6. See error message
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: What part of the system is affected?
+      description: Select the area where the bug occurs
+      options:
+        - Student Registration
+        - Student Unregistration
+        - Activity Display/List
+        - Filters (day/time)
+        - Search
+        - Teacher Login
+        - Teacher Logout
+        - Activity Details
+        - Other (describe below)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How severe is this bug?
+      description: How much does this impact your work?
+      options:
+        - Critical - System is completely unusable
+        - High - Major feature is broken
+        - Medium - Feature works but has issues
+        - Low - Minor inconvenience
+    validations:
+      required: true
+      
+  - type: input
+    id: affected-activity
+    attributes:
+      label: Affected Activity (if applicable)
+      description: Which activity is affected by this bug?
+      placeholder: "e.g., Chess Club, Soccer Team"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: Copy any error messages you see
+      placeholder: "e.g., 'Failed to sign up. Please try again.'"
+      render: text
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser (if relevant)
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not applicable
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help (screenshots, videos, etc.)
+      placeholder: "e.g., This started happening after the last update, only affects specific activities"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Acceptance Criteria
+        
+        When this issue is resolved:
+        - The described problem should no longer occur
+        - All related functionality should work as expected
+        - The fix should not break any existing features
+        - Similar edge cases should be considered and tested
+        
+        ## Investigation Tips
+        
+        For developers:
+        - Check browser console for JavaScript errors
+        - Review API responses in the Network tab
+        - Test with the FastAPI interactive docs at `/docs`
+        - Review relevant backend logs
+        - Check database state if data-related
+        - Consider authentication/authorization issues
+        - Look for similar issues in the codebase

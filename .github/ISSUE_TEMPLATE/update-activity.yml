@@ -1,0 +1,139 @@
+name: Update Existing Activity
+description: Request changes to an existing activity's details (schedule, description, capacity, etc.)
+title: "[Update Activity]: "
+labels: ["enhancement", "activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request updates to an existing activity or club.
+        
+  - type: dropdown
+    id: activity-name
+    attributes:
+      label: Activity/Club Name
+      description: Which activity needs to be updated?
+      options:
+        - Chess Club
+        - Programming Class
+        - Morning Fitness
+        - Soccer Team
+        - Basketball Team
+        - Art Club
+        - Drama Club
+        - Science Club
+        - Band Practice
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Manga Maniacs
+        - Other (specify in description)
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: update-type
+    attributes:
+      label: What needs to be updated?
+      description: Select all that apply
+      options:
+        - label: Description
+        - label: Schedule (days)
+        - label: Schedule (times)
+        - label: Maximum participant capacity
+        - label: Other (explain below)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: new-description
+    attributes:
+      label: New Description (if applicable)
+      description: Provide the new description for the activity
+      placeholder: "e.g., Enhanced program now includes competitive tournaments"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: new-schedule-days
+    attributes:
+      label: New Schedule Days (if applicable)
+      description: Select all days that apply for the new schedule
+      multiple: true
+      options:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+    validations:
+      required: false
+      
+  - type: input
+    id: new-start-time
+    attributes:
+      label: New Start Time (if applicable)
+      description: When should the activity start? (Use 24-hour format HH:MM)
+      placeholder: "e.g., 15:30 for 3:30 PM"
+    validations:
+      required: false
+      
+  - type: input
+    id: new-end-time
+    attributes:
+      label: New End Time (if applicable)
+      description: When should the activity end? (Use 24-hour format HH:MM)
+      placeholder: "e.g., 17:00 for 5:00 PM"
+    validations:
+      required: false
+      
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: New Maximum Participants (if applicable)
+      description: What should the new maximum number of students be?
+      placeholder: "e.g., 25"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: "e.g., We need to accommodate more students due to high demand"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-changes
+    attributes:
+      label: Other Changes
+      description: Describe any other changes not covered above
+      placeholder: "e.g., Activity location has changed, teacher sponsor has changed"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ## Acceptance Criteria
+        
+        When this issue is completed:
+        - The activity should display the updated information on the website
+        - All existing student registrations should be preserved
+        - The activity should still be filterable and searchable correctly
+        - Updated schedule times should be reflected in filters
+        
+        ## Implementation Notes
+        
+        For developers: Update the activity in the `initial_activities` dictionary in `src/backend/database.py`. Make sure to:
+        - Only modify the specific fields mentioned in the request
+        - Preserve the existing `participants` array
+        - Update both the human-readable `schedule` string and the `schedule_details` object if schedule changes
+        - Format times consistently in 24-hour format (HH:MM)
+        - If the activity is already in production database, consider if a database migration is needed
